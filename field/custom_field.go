@@ -102,7 +102,7 @@ func setTime(doc interface{}, fieldName string, overWrite bool) {
 	e := reflect.ValueOf(doc).Elem()
 	ca := e.FieldByName(fieldName)
 	if ca.CanSet() {
-		tt := time.Now()
+		tt := time.Now().UTC()
 		switch a := ca.Interface().(type) {
 		case time.Time:
 			if reflect.DeepEqual(ca.Interface().(time.Time), nilTime) {
